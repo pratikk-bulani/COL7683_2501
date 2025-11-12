@@ -1,0 +1,76 @@
+Quiz 1
+
+1. 2 marks: Printer should have a spatial resolution of 200 pixels/cm, or 20 px/mm, or ~500 px/in (dots instead of pixels is also OK, e.g. 500 dpi). -0.5 marks if word "resolution" not mentioned. -0.5 marks if result given in units of pixels/area, e.g. 4k pixels/cm^2.
+
+2. 2 marks: 0.5 marks: no, it is not linear. 1.5 marks: any valid counterexample. e.g. student picks some r in [k/2, k), then T(r) = 0 but T(2r) = L-1 != 2T(r).
+
+
+Quiz 2
+
+1. 2 marks: 0.5 marks for saying no, not possible. 1.5 marks for valid counterexample, e.g. f1 = [1,0] and f2 = [0,1] have same histogram h_f, but if g = [1,0] then f1 + g and f2 + g don't have same histogram.
+
+2. 2 marks: Consider constant f(x,y) = c, then (w*f)(x,y) = sum c w(x,y) = c sum w(x,y). Output should be zero => sum w(x,y) = 0.
+
+
+
+Quiz 3
+
+1. 0.5 marks for saying false. 1.5 marks for valid counterexample, i.e. some nonlinear intensity transformation where relative ratios of R, G, B change.
+
+2. 1 marks: Convolution with box has Fourier transform G(μ) = F(μ) sinc(μ) (0.5 mark for FT(box) = sinc, 0.5 mark for multiplication in frequency domain). 1 mark: Result after sampling is convolution with impulse train, writing either G~ = G * s_1 or G~(μ) = sum_n G(μ-n) is OK (0.5 mark for impulse train, 0.5 mark for convolution or sum in frequency domain).
+
+
+
+Quiz 4
+
+1. 1 mark: w is even => W is real and even. 1 mark: multiplication with real number doesn't change phase.
+
+2. 2 marks: Intensity oscillations are ringing artifacts due to hard cutoff in frequency domain. Use smoother falloff through Gaussian or Butterworth.
+
+
+
+Quiz 5
+
+1. Mean: no (0.5 marks), we don't know the original intensities of the original image (0.5 marks). Variance: yes (0.5 marks), take variance of intensities of pixels in constant regions (0.5 marks).
+
+2. Wiener filter: W = H*/(|H|^2 + Sn/Sf) (1 mark), becomes zero when H = 0 (1 mark) so noise is also zeroed out.
+
+
+
+Quiz 6
+
+1. Linearly independent: yes (0.5 marks), any valid justification (0.5 marks) e.g. for c0 t0(x) + c1 t1(x) + c2 t2(x) to be zero it has to be zero at x = 0, 1, 2 => c0 = c1 = c2 = 0. Orthogonal: no (0.5 marks), integral t0(x) t1(x) dx is not zero (0.5 marks).
+
+2. Plot of s0 should be constant sqrt(1/N) (0.25 marks), s1 should be decreasing from sqrt(2/N) to -sqrt(2/N) (0.25 marks). cos(..) has all values 1 when u = 0 while it has some values less than 1 when u != 0, so needs larger normalization (0.5 marks).
+
+
+
+Quiz 7
+
+1. If phi_00 = f, then phi_10 is box on (-1/4, 1/4) (1 mark). phi_1k's are boxes on (-1/4, 1/4), (1/4, 3/4), (3/4, 5/4), ..., linear combination can't reproduce f (1 mark). (OR: f is in V0 but not in V1.)
+
+2. H = -sum p log p = -0.5 log 0.5 - 255 * (1/510 log 1/510) = 0.5 + 1/2 * 9 = 5. 2 marks
+
+
+
+Quiz 8
+
+1. Apply definition of erosion (1 mark). Result = {9 <= x <= 19, 10 <= y <= 20} (1 mark)
+
+2. Opening: only big squares remain (1 mark). Closing of opening: bridge between squares returns (1 mark).
+
+
+
+Quiz 9
+
+1. Without Gaussian smoothing: spurious edges detected due to noise (1 mark). Without non-max suppression: detected edges are thick instead of 1 pixel wide (1 mark).
+
+2. EITHER: \sigma_B^2 = P1 P2 (m1 - m2)^2 (1 mark), if k -> 0 or 255 then P1 -> 0 or P2 -> 0 (1 mark). OR: \sigma_B^2 = P1 (m1 - mG)^2 + P2 (m2 - mG)^2 (1 mark), if k -> 0 then P1 -> 0 and m2 -> mG and vice versa when k -> 255 (1 mark).
+
+
+
+Quiz 10
+
+1. EITHER: watershed segmentation (1 mark) on gradient magnitude (0.5 marks) with known pixels as markers (0.5 marks). OR: graph cut (1 mark) with region costs only on known pixels (1 mark).
+
+2. (a) large because gradients in all directions, (b) large because both horizontal and vertical gradients, (c) small because only horizontal gradients, (d) large because gradients in all directions. 0.5 marks each.
