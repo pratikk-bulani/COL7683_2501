@@ -1,0 +1,57 @@
+Q1
+
+a. Should get a sequence of images getting smaller and blurrier, like Lecture 17 slide 4 left column
+
+b. Same slide, right column. Smallest image should be same as smallest image of Gaussian pyramid
+
+c. Just cut-paste of two images
+
+d. Should get something like Lecture 16 slide 20
+
+
+
+Q2
+
+a. One way: Let c0 = (f0 + f1)/sqrt(2), c0 = (f0 - f1)/sqrt(2). Show f0^2 + f1^2 = c0^2 + d0^2. So ||[f0, f1, f2, f3, ...]||^2 = sum fi^2 = sum ci^2 + sum di^2 = ||[c0, c1, ..., d0, d1, ...]||^2. Now repeat on c. Should also report numerical values of ||f||^2 and ||t||^2 for chosen signal.
+
+b. Haar transform should look like https://piazza.com/class/mdd1niejpt240w/post/30_f6
+
+c. Only have to show images, not report RMSE or PSNR (though they can do that too). Result of Haar should look blocky and made of horizontal and vertical rectangles, but better capture shapes and details compared to downsampled result.
+
+
+
+Q3
+
+a. Should implement Haar wavelet transform directly. Difference from 2b: top-right and bottom-left quadrants aren't recursively subdivided, they remain one big image like bottom-right. Histogram for f should have sharp peak near 0, for eta should be Gaussian
+
+b. Results should be similar to http://www.numerical-tours.com/matlab/denoisingwav_2_wavelet_2d/
+
+c. db2 wavelets should give smoother results, no blocky discontinuities compared to Haar
+
+
+
+Q4
+
+a. Nothing much to check
+
+b. Orthogonality of DCT ==> MSE of f = MSE of DCT(f) ==> discard lowest-magnitude DCT coefficients until sum of squares of discarded coeffs reaches (0.1 Imax)^2.
+
+c. Possibly better compression but ringing artifacts? Haven't actually tried it, curious to see what students get. Anyway, main reason not to use in practice is computational expense
+
+d. Should get much better compression (more discarded coeffs) for same PSNR. Not sure if image quality will be better or same. If prediction error doesn't use decoded blocks, error in one block should contaminate many blocks to right and below.
+
+
+
+Q5
+
+a. Error image and histogram should look like Lecture 20 slide 13. Errors much lower for f1 (zero error in constant regions) than photographic image f2
+
+b. Nothing much to check
+
+c. For constant sequence, LZW output length is O(sqrt(N)): first output codeword encodes 1 input symbol, next encodes 2, then 3, and so on, so k output codewords encode O(k^2) input symbols
+
+d. Average Huffman code length should be a little greater than entropy
+
+e. I guess actual compression ratio should be ~= prediction ratio * LZW ratio? Not exactly. But compression should be very good for f1.
+
+f. Compression ratio should improve if multiple possibilities are allowed, overhead is extra 3 bits at start of row. Verify that decoder still works. RLE may be better than LZW for f1 since you can encode constant sequence in O(log N) bits, but not sure how it will play out in practice.
