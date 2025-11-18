@@ -1,0 +1,47 @@
+Q1
+
+a. Dilation should make all the letters thick. Closing should connect gaps between letters.
+
+b. Only one or a few c's (and maybe some e's) will be selected. Other c's that differ by even one missing pixel will fail to match.
+
+c. Erosion of B by a small SE will work.
+
+d. Dilate B by a small amount and take its boundary (see Lecture 21 slide 22).
+
+
+
+Q2
+
+a. See L22.S11.
+
+b. See L22.S14. The SE should be wider than the widest blood vessel, so that closing removes all blood vessels.
+
+c. Closing with a disk wider than the widest gap. (Dilation instead of closing will remove the gaps but also thicken the vessels.)
+
+d. Opening with different disks of different widths w, then compute "surface area" S = sum of intensities (L22.S16-17). Plot either S or |dS/dw| as a function of w. Values of w where S decreases, or |dS/dw| is large, correspond to typical thickness values.
+
+
+
+Q3
+
+a. Produce images similar to L23.S25-26.
+
+b. Hough transform image should look similar to L23.S33 bottom left (see also https://sbme-tutorials.github.io/2021/cv/notes/4_week4.html).
+
+c. See L23.S33 bottom right and https://sbme-tutorials.github.io/2021/cv/notes/4_week4.html
+
+
+
+Q4
+
+a. Student may have to work out P1, P2, m1, m2 to finally derive σ^2_B in 3 cases: (i) -b < k < b, (ii) b < k < 1-a, (iii) 1-a < k < 1+a. I have not worked out exact formula yet, may try later if I have time. Correct segmentation is when maximum of σ^2_B occurs in b < k < 1-a. Incorrect segmentation if maximum occurs in one of 2 other cases.
+
+b. If either b > 1/2 or a > 1/2, some pixels change their assignment and cluster means move away from true class means. Reason for possible agreement/disagreement with Otsu's method: both k-means and Otsu minimize within-class variance and maximize between-class variance, but k-means stops at a local optimum while Otsu finds the global optimum.
+
+
+
+Q5
+
+a. Results should be similar to L24.S22: regions of similar colours form clusters but they are not spatially compact. If object has very different colour(s) than background then a reasonable segmentation may be possible, but otherwise probably not.
+
+b-d. As discussed on email. Can provide more details later after seeing some submissions.
